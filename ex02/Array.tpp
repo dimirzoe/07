@@ -1,5 +1,9 @@
 #include "Array.hpp"
 
+// ******************************************//
+//       ORTHODOX CANONICAL FORM (OCF)       //
+// ******************************************//
+
 template <typename T>
 Array<T>::Array() : _array(NULL), _size(0) {}
 
@@ -11,7 +15,7 @@ size_t Array<T>::size() const
 {
     return this->_size;
 }
-
+//copy constructor
 template <typename T>
 Array<T>::Array(const Array& other) : _array(NULL), _size(0)
 {
@@ -24,6 +28,7 @@ Array<T>::Array(const Array& other) : _array(NULL), _size(0)
     }
 }
 
+//copy assignment operator
 template <typename T>
 Array<T> &Array<T>::operator=(const Array& other)
 {
@@ -40,6 +45,14 @@ Array<T> &Array<T>::operator=(const Array& other)
 
 template <typename T>
 T& Array<T>::operator[](int index)
+{
+    if (index < 0 || static_cast<size_t>(index) >= this->_size)
+        throw std::out_of_range("Index out of bounds");
+    return this->_array[index];
+}
+
+template <typename T>
+const T& Array<T>::operator[](int index) const
 {
     if (index < 0 || static_cast<size_t>(index) >= this->_size)
         throw std::out_of_range("Index out of bounds");

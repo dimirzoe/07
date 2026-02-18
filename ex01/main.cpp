@@ -1,5 +1,6 @@
 #include "iter.hpp"
-
+/*I use ::iter to explicitly call the function defined in the global scope.
+    It means the function is not inside any class or namespace.*/
 int main() {
     std::cout << "Printing integers: " << std::endl;
     int numbers[] = {1, 2, 3, 4, 5};
@@ -11,9 +12,9 @@ int main() {
     std::cout << "Printing words: " << std::endl;
     ::iter(words, wordLength, printString<std::string>);
 
-    double doubnumbers[] = {11.1, 22.2, 33.3, 44.4, 55.5};
-    size_t doublelength = sizeof(doubnumbers) / sizeof(doubnumbers[0]);
+    double doublenumbers[] = {11.1, 22.2, 33.3, 44.4, 55.5};
+    size_t doublelength = sizeof(doublenumbers) / sizeof(doublenumbers[0]);
     std::cout << "Printing doubles: " << std::endl;
-    ::iter(doubnumbers, doublelength, printString<double>);
+    ::iter(doublenumbers, doublelength, printString<double>);
     return 0;
 }
